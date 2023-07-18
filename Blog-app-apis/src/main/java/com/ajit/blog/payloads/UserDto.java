@@ -1,11 +1,8 @@
 package com.ajit.blog.payloads;
 
-
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,15 +18,18 @@ public class UserDto {
 	private int id;
 	
 	@NotEmpty
+	@Size(min = 4 ,message = "Username must have atleast 4 characters !!")
 	private String name;
 	
-	@Email
+	@Email(message = "Enter valid email address")
+	@NotEmpty
 	private String email;
 	
 	@NotEmpty
+	@Size(min = 4,max = 10, message = "Password must have min 4 charaters and max charater 10")
 	private String password;
 	
-	@NotNull
+	@NotEmpty
 	private String about;
 
 }

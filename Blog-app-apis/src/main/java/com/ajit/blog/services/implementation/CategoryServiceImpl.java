@@ -5,13 +5,14 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ajit.blog.entities.Category;
 import com.ajit.blog.exceptions.ResourceNotFoundException;
 import com.ajit.blog.payloads.CategoryDto;
 import com.ajit.blog.repository.CategoryRepository;
 import com.ajit.blog.services.CategoryService;
-
+@Service
 public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	CategoryRepository categoryRepository;
@@ -60,7 +61,7 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	//get All categories
 	@Override
-	public List<CategoryDto> getCategories(CategoryDto categoryDto) {
+	public List<CategoryDto> getCategories() {
 		List<Category> findAll = this.categoryRepository.findAll();
 		List<CategoryDto> collect = findAll.stream().map(category -> this.categoryToDto(category)).collect(Collectors.toList());
 		return collect;

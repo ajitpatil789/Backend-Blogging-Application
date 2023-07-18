@@ -2,7 +2,7 @@ package com.ajit.blog.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ajit.blog.payloads.ApiResponce;
 import com.ajit.blog.payloads.UserDto;
 import com.ajit.blog.services.UserService;
+
+import jakarta.validation.Valid;
 
 @Validated
 @RestController
