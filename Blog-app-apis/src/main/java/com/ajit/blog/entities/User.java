@@ -1,7 +1,9 @@
 package com.ajit.blog.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,5 +40,10 @@ public class User {
 	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Post> posts = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private Set<Comment> comments = new HashSet<>();
+	
+	
 
 }
