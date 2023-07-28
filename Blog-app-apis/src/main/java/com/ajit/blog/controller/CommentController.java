@@ -17,7 +17,7 @@ import com.ajit.blog.services.CommentService;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/v1/")
 public class CommentController {
 	
 	@Autowired

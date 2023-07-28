@@ -5,6 +5,7 @@ import com.ajit.blog.payloads.UserDto;
 
 public interface UserService {
 	
+	UserDto RegisterNewUser(UserDto userDto);
 	UserDto createUser(UserDto user);
 	UserDto updateUser(UserDto user,Integer UserId);
 	UserDto getUserById(Integer UserId);

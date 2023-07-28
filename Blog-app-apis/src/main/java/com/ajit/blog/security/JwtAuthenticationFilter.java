@@ -37,13 +37,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 		// Bearer 25dsssf25f5s5f33
 
-		System.out.println(requestToken);
+		//System.out.println(requestToken);
 
 		String username = null;
 
 		String token = null;
 
-		if (requestToken != null && requestToken.startsWith("Bearer")) {
+		if (requestToken != null && requestToken.startsWith("Bearer ")) {
 
 			token = requestToken.substring(7);
 
@@ -63,7 +63,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 		// Once we get the token , now validate
 
-		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+		if (username != null && SecurityContextHolder.getContext().getAuthentication()== null) {
 
 			UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
