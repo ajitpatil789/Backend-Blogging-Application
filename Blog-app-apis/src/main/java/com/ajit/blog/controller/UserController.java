@@ -2,7 +2,7 @@ package com.ajit.blog.controller;
 
 import java.util.List;
 
-
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ajit.blog.payloads.ApiResponce;
 import com.ajit.blog.payloads.UserDto;
 import com.ajit.blog.services.UserService;
-
-import jakarta.validation.Valid;
 
 @Validated
 @RestController
@@ -31,7 +30,6 @@ public class UserController {
 	private UserService userService;
 
 	// POST - Create user
-
 	@PostMapping("/")
 	public ResponseEntity<UserDto> creatUser(@RequestBody @Valid UserDto userDto) {
 		UserDto createUserDto = this.userService.createUser(userDto);
@@ -46,9 +44,9 @@ public class UserController {
 		return ResponseEntity.ok(updateUser);
 
 	}
-	
+
 	// GET- Get all Users
-	@GetMapping("/")
+	@GetMapping("/" )
 	public ResponseEntity<List<UserDto>>getAllUser(){
 		return ResponseEntity.ok(this.userService.getAllUsers());
 	}
@@ -61,9 +59,8 @@ public class UserController {
 	
 	//admin
 	//DELETE -Delete User
-	
-	@DeleteMapping("/{userId}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponce>deleteUser(@PathVariable Integer userId){
 		this.userService.deleteUser(userId);
 		return new ResponseEntity<ApiResponce>(new ApiResponce("User delete successfully", true),HttpStatus.OK);

@@ -14,10 +14,9 @@ import com.ajit.blog.config.AppConstants;
 import com.ajit.blog.entities.Role;
 import com.ajit.blog.repository.RoleRepo;
 
+
 @SpringBootApplication
-
 public class BlogAppApisApplication implements CommandLineRunner {
-
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -62,4 +61,5 @@ public class BlogAppApisApplication implements CommandLineRunner {
 		}
 
 	}
+
 }

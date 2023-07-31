@@ -7,10 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,19 +26,16 @@ import com.ajit.blog.security.CustomUserDetailService;
 import com.ajit.blog.security.JwtAuthenticationEntryPoint;
 import com.ajit.blog.security.JwtAuthenticationFilter;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 @Configuration
 @EnableWebSecurity
 @EnableWebMvc
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-//@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-	 public static final String[] PUBLIC_URLS = {"/api/v1/auth/**", "/v3/api-docs", "/v2/api-docs",
-	            "/swagger-resources/**", "/swagger-ui/**", "/webjars/**"
+    public static final String[] PUBLIC_URLS = {"/api/v1/auth/**", "/v3/api-docs", "/v2/api-docs",
+            "/swagger-resources/**", "/swagger-ui/**", "/webjars/**"
 
-	    };
+    };
 
     @Autowired
     private CustomUserDetailService customUserDetailService;
@@ -59,9 +54,9 @@ public class SecurityConfig {
                 csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers(PUBLIC_URLS)
+                .antMatchers(PUBLIC_URLS)
                 .permitAll()
-                .requestMatchers(HttpMethod.GET)
+                .antMatchers(HttpMethod.GET)
                 .permitAll()
                 .anyRequest()
                 .authenticated()

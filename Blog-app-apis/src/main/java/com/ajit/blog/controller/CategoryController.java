@@ -2,6 +2,8 @@ package com.ajit.blog.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ajit.blog.payloads.ApiResponce;
 import com.ajit.blog.payloads.CategoryDto;
 import com.ajit.blog.services.CategoryService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/category")
@@ -48,7 +48,7 @@ public class CategoryController {
 		
 	}
 	
-	//get user by ID
+	//get Category by ID
 	@GetMapping("/{categoryId}")
 	public ResponseEntity<CategoryDto>getCategory(@PathVariable Integer categoryId){
 		CategoryDto category = this.categoryService.getCategory(categoryId);
